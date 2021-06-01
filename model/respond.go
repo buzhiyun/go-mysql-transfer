@@ -1,6 +1,8 @@
 package model
 
-import "sync"
+import (
+	"sync"
+)
 
 var mqRespondPool = sync.Pool{
 	New: func() interface{} {
@@ -33,6 +35,8 @@ type MQRespond struct {
 	Raw       interface{} `json:"raw,omitempty"`
 	Data      interface{} `json:"data"`
 	ByteArray []byte      `json:"-"`
+	Schema    string      `json:"schema"`
+	Table     string      `json:"table"`
 }
 
 type ESRespond struct {

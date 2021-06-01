@@ -206,9 +206,9 @@ func (s *TransferService) createCanal() error {
 func (s *TransferService) completeRules() error {
 	wildcards := make(map[string]bool)
 	for _, rc := range global.Cfg().RuleConfigs {
-		if rc.Table == "*" {
-			return errors.Errorf("wildcard * is not allowed for table name")
-		}
+		//if rc.Table == "*" {
+		//	return errors.Errorf("wildcard * is not allowed for table name")
+		//}
 
 		if regexp.QuoteMeta(rc.Table) != rc.Table { //通配符
 			if _, ok := wildcards[global.RuleKey(rc.Schema, rc.Schema)]; ok {

@@ -95,6 +95,8 @@ func (s *handler) OnRow(e *canal.RowsEvent) error {
 		for i := 0; i < len(e.Rows); i++ {
 			if (i+1)%2 == 0 {
 				v := new(model.RowRequest)
+				v.Table = e.Table.Name
+				v.Schema = e.Table.Schema
 				v.RuleKey = ruleKey
 				v.Action = e.Action
 				v.Timestamp = e.Header.Timestamp
@@ -109,6 +111,8 @@ func (s *handler) OnRow(e *canal.RowsEvent) error {
 		for _, row := range e.Rows {
 			v := new(model.RowRequest)
 			v.RuleKey = ruleKey
+			v.Table = e.Table.Name
+			v.Schema = e.Table.Schema
 			v.Action = e.Action
 			v.Timestamp = e.Header.Timestamp
 			v.Row = row

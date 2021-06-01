@@ -9,6 +9,8 @@ var RowRequestPool = sync.Pool{
 }
 
 type RowRequest struct {
+	Schema    string
+	Table     string
 	RuleKey   string
 	Action    string
 	Timestamp uint32

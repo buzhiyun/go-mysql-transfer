@@ -199,6 +199,8 @@ func (s *KafkaEndpoint) buildMessage(row *model.RowRequest, rule *global.Rule) (
 	kvm := rowMap(row, rule, false)
 	resp := new(model.MQRespond)
 	resp.Action = row.Action
+	resp.Table = row.Table
+	resp.Schema = row.Schema
 	resp.Timestamp = row.Timestamp
 	if rule.ValueEncoder == global.ValEncoderJson {
 		resp.Data = kvm
